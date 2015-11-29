@@ -1,6 +1,7 @@
 package br.com.supremeforever.mdi;
 
 import br.com.supremeforever.mdi.Exception.PositionOutOfBoundsException;
+import br.com.supremeforever.mdi.PlacementStrategy.Default;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -20,6 +21,7 @@ import java.util.logging.Logger;
 
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Point2D;
+import br.com.supremeforever.mdi.PlacementStrategy.PlacementStrategy;
 
 /**
  * Created by brisatc171.minto on 12/11/2015.
@@ -49,6 +51,10 @@ public class MDICanvas extends VBox {
     private MDICanvas mdiCanvas = this;
     private final int taskbarHeightWithoutScrool = 44;
     private final int taskbarHeightWithScrool = 54;
+    
+    private PlacementStrategy placementStrategy = new Default(this);
+    
+    public MDIWindow lastPlacedWindow = null;
 
     /**
      * *********** CONSTRUICTOR *************
@@ -121,6 +127,10 @@ public class MDICanvas extends VBox {
 
     public HBox getTbWindows() {
         return tbWindows;
+    }
+    
+    public void setPlacementStrategy(PlacementStrategy placementStrategy) {
+        this.placementStrategy = placementStrategy;
     }
 
     /**
@@ -308,6 +318,8 @@ public class MDICanvas extends VBox {
         double windowsWidth = mdiWindow.getLayoutBounds().getWidth();
         double windowsHeight = mdiWindow.getLayoutBounds().getHeight();
         mdiWindow.setPrefSize(windowsWidth, windowsHeight);
+        
+        this.placementStrategy.generateNextPlacementPointFrom(point);
 
         double containerWidth = this.paneMDIContainer.getLayoutBounds().getWidth();
         double containerHeight = this.paneMDIContainer.getLayoutBounds().getHeight();
