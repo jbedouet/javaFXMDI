@@ -54,7 +54,7 @@ public class MDICanvas extends VBox {
     
     private PlacementStrategy placementStrategy = new Default(this);
     
-    public MDIWindow lastPlacedWindow = null;
+    private MDIWindow lastPlacedWindow = null;
 
     /**
      * *********** CONSTRUICTOR *************
@@ -129,6 +129,15 @@ public class MDICanvas extends VBox {
         return tbWindows;
     }
     
+    public MDIWindow getLastPlacedWindow() {
+        //@TODO should return Optional<MDIWindow>
+        return this.lastPlacedWindow;
+    }
+    
+    /**
+     * Determines adjustment to placement point to make window management easier
+     * @param placementStrategy 
+     */
     public void setPlacementStrategy(PlacementStrategy placementStrategy) {
         this.placementStrategy = placementStrategy;
     }
@@ -346,6 +355,7 @@ public class MDICanvas extends VBox {
         mdiWindow.setLayoutX((int) point.getX());
         mdiWindow.setLayoutY((int) point.getY());
         mdiWindow.setVisible(true);
+        this.lastPlacedWindow = mdiWindow;
     }
 
     public void centerMdiWindow(MDIWindow mdiWindow) {
