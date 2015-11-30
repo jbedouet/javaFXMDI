@@ -319,7 +319,7 @@ public class MDICanvas extends VBox {
         double windowsHeight = mdiWindow.getLayoutBounds().getHeight();
         mdiWindow.setPrefSize(windowsWidth, windowsHeight);
         
-        this.placementStrategy.generateNextPlacementPointFrom(point);
+        point = this.placementStrategy.generateNextPlacementPointFrom(point);
 
         double containerWidth = this.paneMDIContainer.getLayoutBounds().getWidth();
         double containerHeight = this.paneMDIContainer.getLayoutBounds().getHeight();
