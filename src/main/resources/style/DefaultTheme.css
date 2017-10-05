@@ -1,3 +1,7 @@
+.root {
+	-fx-font-size: 10;
+}
+
 .taskBar {
         -fx-border-color: #C4C4C4;
         -fx-faint-focus-color: transparent;
