@@ -318,7 +318,7 @@ public class MDICanvas extends VBox {
 
         double containerWidth = this.paneMDIContainer.getLayoutBounds().getWidth();
         double containerHeight = this.paneMDIContainer.getLayoutBounds().getHeight();
-        if (containerWidth <= point.getX() || containerHeight <= point.getY()) {
+        /*if (containerWidth <= point.getX() || containerHeight <= point.getY()) {
             throw new PositionOutOfBoundsException(
                     "Tried to place MDI Window with ID " + mdiWindow.getId() +
                             " at a coordinate " + point.toString() +
@@ -336,7 +336,7 @@ public class MDICanvas extends VBox {
                             containerWidth + "px x " + containerHeight + "px " +
                             " for user to comfortably grab the title bar with the mouse."
             );
-        }
+        }*/
 
         mdiWindow.setLayoutX((int) point.getX());
         mdiWindow.setLayoutY((int) point.getY());
