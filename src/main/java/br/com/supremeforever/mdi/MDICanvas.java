@@ -57,14 +57,14 @@ public class MDICanvas extends VBox {
         super();
 
         Platform.runLater(()->{
-            switch (theme) {
-                case DEFAULT:
-                    setTheme(Theme.DEFAULT, this.getScene());
-                    break;
-                case DARK:
-                    setTheme(Theme.DARK, this.getScene());
-                    break;
-            }
+        	switch (theme) {
+        	case DEFAULT:
+        		setTheme(Theme.DEFAULT, this);
+        		break;
+        	case DARK:
+        		setTheme(Theme.DARK, this);
+        		break;
+        	}
         });
 
         setAlignment(Pos.TOP_LEFT);
@@ -243,7 +243,7 @@ public class MDICanvas extends VBox {
         return null;
     }
 
-    public static void setTheme(Theme theme, Scene scene) {
+    public static void setTheme(Theme theme, MDICanvas scene) {
         File f = null;
         switch (theme) {
             case DEFAULT:
